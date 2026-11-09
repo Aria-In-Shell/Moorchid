@@ -1,0 +1,15 @@
+services:
+  moorchid:
+    build: .
+    environment:
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Set JWT_SECRET_KEY in the deployment environment}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-chat}
+      ZHIPUAI_API_KEY: ${ZHIPUAI_API_KEY:-}
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - journal:/data
+    restart: unless-stopped
+volumes:
+  journal:

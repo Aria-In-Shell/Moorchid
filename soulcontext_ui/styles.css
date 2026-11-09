@@ -1,0 +1,211 @@
+/* ============================================================
+   Moorchid — 界面样式表
+   .flomo-card  : 极简随记卡片（随手记 / 历史随记流）
+   .xhs-card    : 小红书感高颜值卡片（情绪诗篇）
+   ============================================================ */
+
+/* ---------- 全局页面美化 ---------- */
+[data-testid="stAppViewContainer"] {
+    background: #faf9f7;
+}
+
+/* ---------- .flomo-card — 极简随记卡片 ---------- */
+.flomo-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px 20px 16px;
+    margin-bottom: 12px;
+    border: 1px solid #ece9e4;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s ease;
+}
+
+.flomo-card:hover {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.flomo-card .fc-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.flomo-card .fc-emotion-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: #9b8ea0;
+    background: #f4eff7;
+    border-radius: 20px;
+    padding: 2px 9px;
+    letter-spacing: 0.02em;
+}
+
+.flomo-card .fc-time {
+    font-size: 11px;
+    color: #bbb7b3;
+    margin-left: auto;
+}
+
+.flomo-card .fc-content {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #3a3540;
+    margin-bottom: 8px;
+    word-break: break-word;
+}
+
+.flomo-card .fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.flomo-card .fc-tag {
+    font-size: 11px;
+    color: #7c6f87;
+    background: #f0edf5;
+    border-radius: 6px;
+    padding: 2px 8px;
+}
+
+/* ---------- .xhs-card — 小红书风情绪诗篇卡片 ---------- */
+.xhs-card {
+    background: linear-gradient(145deg, #fff9f0 0%, #fff5f9 60%, #f5f0ff 100%);
+    border-radius: 20px;
+    padding: 28px 26px 24px;
+    margin: 16px 0;
+    border: 1px solid #ede5fb;
+    box-shadow: 0 4px 20px rgba(160, 120, 200, 0.10);
+    position: relative;
+    overflow: hidden;
+}
+
+.xhs-card::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(200, 160, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.xhs-card .xhs-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #5c3d7a;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+    position: relative;
+}
+
+.xhs-card .xhs-divider {
+    width: 42px;
+    height: 3px;
+    background: linear-gradient(90deg, #b088dd, #7ec8e3);
+    border-radius: 2px;
+    margin-bottom: 16px;
+}
+
+.xhs-card .xhs-poetry {
+    font-size: 15px;
+    line-height: 2;
+    color: #4a3f5c;
+    white-space: pre-line;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+}
+
+.xhs-card .xhs-emotion-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.xhs-card .xhs-emotion-label {
+    font-size: 11px;
+    color: #8a7fa8;
+    white-space: nowrap;
+}
+
+.xhs-card .xhs-emotion-track {
+    flex: 1;
+    height: 6px;
+    background: #ede5fb;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.xhs-card .xhs-emotion-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #b088dd, #7ec8e3);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.xhs-card .xhs-blessing {
+    font-size: 13px;
+    color: #7c6f87;
+    line-height: 1.65;
+    font-style: italic;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    border-left: 3px solid #c9a8e8;
+}
+
+.xhs-card .xhs-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.xhs-card .xhs-timestamp {
+    font-size: 11px;
+    color: #c4b8d6;
+}
+
+/* ---------- Chat bubble overrides ---------- */
+[data-testid="stChatMessageContent"] {
+    border-radius: 16px !important;
+}
+
+.stChatMessage.user [data-testid="stChatMessageContent"] {
+    background: #e8e0f5 !important;
+}
+
+.stChatMessage.assistant [data-testid="stChatMessageContent"] {
+    background: #ffffff !important;
+    border: 1px solid #ece9e4 !important;
+}
+
+/* ---------- Tab underline accent ---------- */
+[data-testid="stTab"] {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* ---------- Unlock hint (poetry locked state) ---------- */
+.locked-hint {
+    text-align: center;
+    padding: 48px 24px;
+    color: #9b8ea0;
+}
+
+.locked-hint .lock-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.locked-hint p {
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 280px;
+    margin: 0 auto;
+}

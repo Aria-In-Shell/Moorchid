@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-ink-bg: #0b0c0f;
+  --color-ink-raised: #14161c;
+  --color-ink-panel: #181b22;
+  --color-ink-line: rgba(255, 255, 255, 0.08);
+  --color-ink-text: #eceef2;
+  --color-ink-mute: #8b909a;
+  --font-sans: 'Outfit', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Noto Serif SC', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #0b0c0f;
+  color: #eceef2;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.serif {
+  font-family: 'Instrument Serif', 'Noto Serif SC', serif;
+}
+
+.panel-scroll {
+  overflow-y: auto;
+}
+
+@keyframes ecg-draw {
+  from {
+    stroke-dashoffset: var(--path-length);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ecg-flow {
+  to {
+    stroke-dashoffset: -420;
+  }
+}
+
+@keyframes node-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  70% {
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10%, 8%, 0) scale(1.08);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ecg-draw {
+  stroke-dasharray: var(--path-length);
+  animation: ecg-draw 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ecg-flow {
+  stroke-dasharray: 14 36;
+  animation: ecg-flow 7.5s linear infinite;
+}
+
+.ecg-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-in 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.ecg-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+
+.aurora-blob {
+  animation: aurora 18s ease-in-out infinite;
+}
+
+.panel-enter {
+  animation: panel-in 0.28s ease both;
+}
+
+.glass-composer {
+  background: linear-gradient(180deg, rgba(24, 27, 34, 0.88), rgba(14, 16, 20, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+}
+
+.poem-sheet {
+  color: #eceef2;
+  background: linear-gradient(135deg, #192327 0%, #161a21 38%, #171921 100%);
+  border: 1px solid #343e44;
+  border-radius: 20px;
+  padding: 26px 24px;
+  overflow-wrap: anywhere;
+}
+.poem-heading p, .poem-heading small, .poem-moods { color: #abb7bd; font-size: 12px; }
+.poem-heading p span { margin: 0 5px; color: #72888c; }
+.poem-heading h3 { margin: 20px 0 4px; font: 500 28px/1.45 var(--font-serif); }
+.poem-lines { margin: 25px 0; font: 17px/2 var(--font-serif); }
+.poem-lines strong { color: #acdfd4; font-weight: 600; }
+.poem-quote { border-left: 2px solid #75898b; padding-left: 12px; color: #bdc6cb; font: 14px/1.8 var(--font-serif); }
+.poem-quote cite { display: block; color: #a1abb6; font: 12px/1.8 var(--font-sans); }
+.poem-moods { display: flex; flex-wrap: wrap; gap: 5px 14px; margin-top: 20px; }
+.poem-moods span { display: inline-flex; align-items: center; gap: 6px; }
+.poem-moods i { width: 6px; height: 6px; border-radius: 50%; }
+.poem-activity { margin-top: 18px; border-top: 1px solid #354147; padding-top: 14px; color: #a9d9ce; font-size: 14px; }
+.poem-activity summary { cursor: pointer; }
+.poem-activity p { margin-top: 9px; color: #d3dcdf; line-height: 1.8; }
